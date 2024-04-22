@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- rounded_button_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="50dp" /> <!-- Set the radius to control the amount of curvature -->
+    <solid android:color= "#077FCA"/> <!-- Set the background color of the button -->
+</shape>

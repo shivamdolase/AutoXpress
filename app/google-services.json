@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "741430903645",
+    "project_id": "sparekart-372e3",
+    "storage_bucket": "sparekart-372e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741430903645:android:d86fb4ef0b71bed0989eb4",
+        "android_client_info": {
+          "package_name": "com.example.autoxpress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEThZx_OGlMK5U96nvuG4Wh8yd4s72w5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741430903645:android:3ce722277f5f39f4989eb4",
+        "android_client_info": {
+          "package_name": "com.example.autoxpress3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEThZx_OGlMK5U96nvuG4Wh8yd4s72w5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741430903645:android:04adc06f2d5edf25989eb4",
+        "android_client_info": {
+          "package_name": "com.example.autoxpress4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEThZx_OGlMK5U96nvuG4Wh8yd4s72w5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741430903645:android:552095f5e2597b1d989eb4",
+        "android_client_info": {
+          "package_name": "com.example.autoxpress_admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEThZx_OGlMK5U96nvuG4Wh8yd4s72w5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741430903645:android:f03a016b9553dfed989eb4",
+        "android_client_info": {
+          "package_name": "com.example.autoxxpress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEThZx_OGlMK5U96nvuG4Wh8yd4s72w5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
