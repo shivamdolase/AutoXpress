@@ -78,5 +78,7 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
 
+    implementation ("com.razorpay:checkout:1.6.33")
+
 
 }

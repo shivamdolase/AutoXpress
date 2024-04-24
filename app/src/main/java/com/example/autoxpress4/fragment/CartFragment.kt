@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.autoxpress4.R
 import com.example.autoxpress4.activity.AddressActivity
 import com.example.autoxpress4.adapter.CartAdapter
 import com.example.autoxpress4.databinding.FragmentCartBinding
@@ -32,13 +32,35 @@ class CartFragment : Fragment() {
         val dao= AppDatabase.getInstance(requireContext()).productDao()
 
         list=ArrayList()
-        dao.getAllProducts().observe(requireActivity()){
-            binding.cartRecycler.adapter=CartAdapter(requireContext(),it)
+        val adapter = CartAdapter(requireContext(), emptyList())
+        binding.cartRecycler.adapter = adapter
+//        if(binding.cartRecycler.adapter != null) {
+//            Toast.makeText(requireContext(), "yes", Toast.LENGTH_LONG).show();
+//        }else{
+//            Toast.makeText(requireContext(), "no", Toast.LENGTH_LONG).show();
+//
+//        }
+//        dao.getAllProducts().observe(requireActivity()){
+//            binding.cartRecycler.adapter=CartAdapter(requireContext(),it)
+//
+//            adapter.updateData(it)
+//            list.clear()
+//            for(data in it){
+//                list.add(data.productId)
+//            }
+//            totalCost(it)
+//        }
+        dao.getAllProducts().observe(viewLifecycleOwner) { products ->
+            if (binding.cartRecycler.adapter == null) {
+                binding.cartRecycler.adapter = CartAdapter(requireContext(), products)
+            } else {
+                adapter.updateData(products)
+            }
             list.clear()
-            for(data in it){
+            for (data in products) {
                 list.add(data.productId)
             }
-            totalCost(it)
+            totalCost(products)
         }
 
         return binding.root
@@ -55,8 +77,12 @@ class CartFragment : Fragment() {
 
         binding.checkout.setOnClickListener{
             val intent= Intent(context, AddressActivity::class.java)
-            intent.putExtra("totalCost",total)
-            intent.putExtra("productIds",list)
+            val b=Bundle()
+            b.putStringArrayList("productIds",list)
+            b.putString("totalCost",total.toString())
+            //intent.putExtra("totalCost",total.toString())
+            //intent.putStringArrayListExtra("productIds",list)
+            intent.putExtras(b)
             startActivity(intent)
         }
     }

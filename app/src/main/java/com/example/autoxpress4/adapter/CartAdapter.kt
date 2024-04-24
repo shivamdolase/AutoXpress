@@ -15,47 +15,45 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class CartAdapter(val context: Context,val list: List<ProductModel>):
-RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
-    inner class CartViewHolder(val binding: LayoutCartItemBinding):
-            RecyclerView.ViewHolder(binding.root)
+class CartAdapter(val context: Context, var list: List<ProductModel>) :
+    RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+
+    inner class CartViewHolder(val binding: LayoutCartItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
-        val binding =LayoutCartItemBinding.inflate(LayoutInflater.from(context),parent,false)
-        return CartViewHolder((binding))
+        val binding = LayoutCartItemBinding.inflate(LayoutInflater.from(context), parent, false)
+        return CartViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    @SuppressLint("SuspiciousIndentation")
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        Glide.with(context).load(list[position].productImage).into(holder.binding.imageView4)
-        holder.binding.textView10.text=list[position].productName
-        holder.binding.textView11.text=list[position].productSp
+        val currentItem = list[position]
+        Glide.with(context).load(currentItem.productImage).into(holder.binding.imageView4)
+        holder.binding.textView10.text = currentItem.productName
+        holder.binding.textView11.text = currentItem.productSp
 
-        holder.itemView.setOnClickListener{
-            val intent = Intent(context,ProductDetailActivity::class.java)
-               intent.putExtra("id",list[position].productId)
-               context.startActivity(intent)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ProductDetailActivity::class.java)
+            intent.putExtra("id", currentItem.productId)
+            context.startActivity(intent)
         }
 
-        val dao=AppDatabase.getInstance(context).productDao()
-        holder.binding.imageView5.setOnClickListener{
-
+        val dao = AppDatabase.getInstance(context).productDao()
+        holder.binding.imageView5.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO) {
-                dao.deleteProduct(
-                    ProductModel(
-                        list[position].productId,
-                        list[position].productName,
-                        list[position].productImage,
-                        list[position].productSp
-                    )
-                )
+                dao.deleteProduct(currentItem)
             }
-
         }
+    }
 
+    fun updateData(newList: List<ProductModel>) {
+        list = newList
+        notifyDataSetChanged()
     }
 }
+

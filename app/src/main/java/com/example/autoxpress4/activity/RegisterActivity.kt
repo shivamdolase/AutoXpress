@@ -32,14 +32,15 @@ class RegisterActivity : AppCompatActivity() {
         else
             storeData()
     }
+    private lateinit var builder: AlertDialog
 
     private fun storeData() {
-        val builder= AlertDialog.Builder(this)
-            .setTitle("Loading.....")
-            .setMessage("Please Wait")
-            .setCancelable(false)
-            .create()
-        builder.show()
+        //builder= AlertDialog.Builder(this)
+           // .setTitle("Loading.....")
+           // .setMessage("Please Wait")
+           // .setCancelable(false)
+         //   .create()
+       // builder.show()
 
         val preferences= this.getSharedPreferences("user", MODE_PRIVATE)
         val editor = preferences.edit()
@@ -52,11 +53,11 @@ class RegisterActivity : AppCompatActivity() {
         Firebase.firestore.collection("users").document(binding.userNumber.text.toString())
             .set(data).addOnSuccessListener {
                 Toast.makeText(this,"user registered", Toast.LENGTH_SHORT).show()
-                builder.dismiss()
+                //builder.dismiss()
                 openLogin()
             }
             .addOnFailureListener{
-                builder.dismiss()
+                //builder.dismiss()
                 Toast.makeText(this,"Somethig went wrong", Toast.LENGTH_SHORT).show()
             }
     }
